@@ -1,0 +1,240 @@
+from dataclasses import dataclass
+from enum import Enum
+
+
+# ===== ESTRUTURAS =====
+
+@dataclass
+class Membro:
+    id: int
+    nome: str
+    cargo: str
+
+
+@dataclass
+class Projeto:
+    id: int
+    titulo: str
+
+
+@dataclass
+class Tarefa:
+    id: int
+    membro: int
+    projeto: int
+    horas_estimadas: float
+    situacao: str = "planejada"
+
+
+class Situacao(Enum):
+    PLANEJADA = "planejada"
+    ANDAMENTO = "em andamento"
+    REVISAO = "em revisão"
+    CONCLUIDA = "concluída"
+    CANCELADA = "cancelada"
+
+
+# ===== REPOSITÓRIOS =====
+
+membros = []
+projetos = []
+tarefas = []
+
+
+def gerar_id(lista):
+    return len(lista) + 1
+
+
+def localizar_por_id(lista, codigo):
+    for registro in lista:
+        if registro.id == codigo:
+            return registro
+    return None
+
+
+# ===== GESTÃO DE MEMBROS =====
+
+def cadastrar_membro():
+    membro = Membro(
+        gerar_id(membros),
+        input("Nome do colaborador: "),
+        input("Cargo/Função: ")
+    )
+    membros.append(membro)
+    print("Membro adicionado à equipe!")
+
+
+def listar_membros():
+    if not membros:
+        print("Nenhum membro cadastrado.")
+        return
+
+    for m in sorted(membros, key=lambda x: x.nome):
+        print(f"{m.id} - {m.nome} ({m.cargo})")
+
+
+def remover_membro():
+    listar_membros()
+    codigo = int(input("ID do membro a remover: "))
+    membro = localizar_por_id(membros, codigo)
+
+    if membro:
+        membros.remove(membro)
+        print("Membro removido com sucesso!")
+    else:
+        print("Membro não localizado.")
+
+
+# ===== GESTÃO DE PROJETOS =====
+
+def cadastrar_projeto():
+    projeto = Projeto(
+        gerar_id(projetos),
+        input("Título do projeto: ")
+    )
+    projetos.append(projeto)
+    print("Projeto registrado!")
+
+
+def listar_projetos():
+    if not projetos:
+        print("Nenhum projeto registrado.")
+        return
+
+    for p in projetos:
+        print(f"{p.id} - {p.titulo}")
+
+
+# ===== GESTÃO DE TAREFAS =====
+
+def criar_tarefa():
+    listar_membros()
+    membro_id = int(input("ID do responsável: "))
+
+    listar_projetos()
+    projeto_id = int(input("ID do projeto: "))
+
+    horas = float(input("Horas estimadas: "))
+
+    tarefa = Tarefa(
+        gerar_id(tarefas),
+        membro_id,
+        projeto_id,
+        horas
+    )
+
+    tarefas.append(tarefa)
+    print("Tarefa vinculada e criada!")
+
+
+def listar_tarefas():
+    if not tarefas:
+        print("Nenhuma tarefa cadastrada.")
+        return
+
+    for t in tarefas:
+        print(
+            f"Tarefa #{t.id} | "
+            f"Responsável ID: {t.membro} | "
+            f"Estimativa: {t.horas_estimadas:.1f}h | "
+            f"Situação: {t.situacao}"
+        )
+
+
+def atualizar_situacao():
+    listar_tarefas()
+
+    codigo = int(input("ID da tarefa: "))
+    tarefa = localizar_por_id(tarefas, codigo)
+
+    if not tarefa:
+        print("Tarefa não encontrada.")
+        return
+
+    print("1 - Em andamento")
+    print("2 - Em revisão")
+    print("3 - Concluída")
+    print("4 - Cancelada")
+
+    escolha = input("Selecione a nova situação: ")
+
+    opcoes = {
+        "1": Situacao.ANDAMENTO.value,
+        "2": Situacao.REVISAO.value,
+        "3": Situacao.CONCLUIDA.value,
+        "4": Situacao.CANCELADA.value
+    }
+
+    if escolha in opcoes:
+        tarefa.situacao = opcoes[escolha]
+        print("Situação atualizada!")
+    else:
+        print("Seleção inválida.")
+
+
+# ===== PAINEL DE METRICAS =====
+
+def relatorio_geral():
+    # List comprehension
+    concluidas = [
+        t for t in tarefas
+        if t.situacao == Situacao.CONCLUIDA.value
+    ]
+
+    # Map
+    horas_totais = list(map(lambda t: t.horas_estimadas, tarefas))
+
+    print(f"\nTotal de Tarefas: {len(tarefas)}")
+    print(f"Tarefas Concluídas: {len(concluidas)}")
+
+    if horas_totais:
+        print(f"Volume Total Estimado: {sum(horas_totais):.1f} horas")
+
+    # Slicing
+    print("Últimas tarefas registradas:", tarefas[-3:])
+
+
+# ===== MENU PRINCIPAL =====
+
+def executar():
+    while True:
+
+        print("\n=== GERENCIADOR DE TAREFAS ===")
+        print("1 - Adicionar colaborador")
+        print("2 - Listar equipe")
+        print("3 - Remover colaborador")
+        print("4 - Adicionar projeto")
+        print("5 - Listar projetos")
+        print("6 - Criar nova tarefa")
+        print("7 - Listar tarefas")
+        print("8 - Atualizar situação de tarefa")
+        print("9 - Painel de métricas")
+        print("0 - Sair")
+
+        opcao = input("Opção desejada: ")
+
+        if opcao == "1":
+            cadastrar_membro()
+        elif opcao == "2":
+            listar_membros()
+        elif opcao == "3":
+            remover_membro()
+        elif opcao == "4":
+            cadastrar_projeto()
+        elif opcao == "5":
+            listar_projetos()
+        elif opcao == "6":
+            criar_tarefa()
+        elif opcao == "7":
+            listar_tarefas()
+        elif opcao == "8":
+            atualizar_situacao()
+        elif opcao == "9":
+            relatorio_geral()
+        elif opcao == "0":
+            break
+        else:
+            print("Opção inválida, tente novamente.")
+
+
+executar()
