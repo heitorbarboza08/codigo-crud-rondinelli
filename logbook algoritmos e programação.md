@@ -24,11 +24,19 @@
 | Campo | Preencha |
 |---|---|
 | **Nome do estudante** | Heitor França Barboza |
+<<<<<<< HEAD
 | **Curso / Módulo** | Sistema de Informação · 2º período |
 | **Unidade curricular** | Algoritmos e Programação — UnDB 2026.2 |
 | **Professor** | Rondineli Seba Salomão |
 | **App-base do meu CRUD** | Sistema de gerenciamento de tarefas, projetos e colaboradores (Membro, Projeto, Tarefa) |
 | **Link do meu repositório** | https://github.com/heitorbarboza08/crud-e-logbook-rondinelli |
+=======
+| **Curso / Módulo** | Sistema de Informação · 2º período_ |
+| **Unidade curricular** | Algoritmos e Programação — UnDB 2026.2 |
+| **Professor** | Rondineli Seba Salomão |
+| **App-base do meu CRUD** | Um sistema simples de gerenciamento de tarefas e projetos |
+| **Link do meu repositório** | https://github.com/heitorbarboza08/codigo-crud-rondinelli/blob/main/crud |
+>>>>>>> b754231bd8512620dfb1b30e03c1c8cfd24a175c
 | **Dupla de revisão (Campo 05)** | Felipe Couto Lamar |
 | **Função neste ciclo** | _Autor do meu CRUD · Revisor do CRUD de um colega_ |
 
@@ -106,10 +114,17 @@ Atualize a cada commit (troque ⬜ por ✅).
 
 | Grupo | Item | Prazo | Preenchido | Commit |
 |:--:|---|---|:--:|:--:|
+<<<<<<< HEAD
 | 1 | Identificação | 16/11 | ✅ | ✅ |
 | 1 | Registros dos Ciclos 01, 02, 03 e 04 | 16/11 | ✅ | ✅ |
 | 1 | Campo 01 — Instrumento de entrada | 16/11 | ✅ | ✅ |
 | 1 | Campo 02 — Aprofundamento | 16/11 | ✅ | ✅ |
+=======
+| 1 | Identificação | 16/11 | ⬜ | ⬜ |
+| 1 | Registros dos Ciclos 01, 02, 03 e 04 | 16/11 | ⬜ | ⬜ |
+| 1 | Campo 01 — Instrumento de entrada | 16/11 | ⬜ | ⬜ |
+| 1 | Campo 02 — Aprofundamento | 16/11 | ⬜ | ⬜ |
+>>>>>>> b754231bd8512620dfb1b30e03c1c8cfd24a175c
 | 2 | Registros dos Ciclos 05, 06, 07 e 08 | 21/11 | ⬜ | ⬜ |
 | 2 | Checkpoint Conceitual | 21/11 | ⬜ | ⬜ |
 | 2 | Campo 03 — Execução e desvios | 21/11 | ⬜ | ⬜ |
@@ -192,9 +207,13 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 
 3. **Objeto(s) de conhecimento mobilizado(s):**
 
+<<<<<<< HEAD
     O que eu já sabia: Sintaxe básica do Python, manipulação de arquivos locais, estruturação de documentos em Markdown (.md) e navegação básica no editor de código VS Code.
 
     O que era novo: Controle de versão distribuído com Git (git init, git add, git commit, git push, git pull), padronização de histórico via Conventional Commits (docs(logbook):), vinculação de repositório local a remoto no GitHub (remote add origin), configuração do terminal integrado no VS Code e definição de schema inicial de dados para um sistema CRUD em memória (Membro, Projeto e Tarefa).
+=======
+    *Laços de repetição (for, if, while), variáveis (bool, string), VS Code**, Github, Git
+>>>>>>> b754231bd8512620dfb1b30e03c1c8cfd24a175c
 
 4. **Desvio ou erro encontrado + causa técnica:** 
 
@@ -238,14 +257,20 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 *Grupo 1 | Prazo segunda 16/11, 23h59 | SEM CONSULTA*
 
 **1a. Objetos de conhecimento identificados (mínimo 3, com vocabulário técnico):**
+<<<<<<< HEAD
 
+=======
+>>>>>>> b754231bd8512620dfb1b30e03c1c8cfd24a175c
 1. Modelagem de dados em memória e coleções: Uso de dataclasses, listas de objetos, ordenação com sorted() e funções anônimas (lambda).
 2. Controle de estado e chaves primárias: Lógica de geração de identificadores únicos (ID) e manutenção da integridade referencial entre entidades relacionadas (Membro, Projeto e Tarefa).
 3. Tratamento de exceções e validação de entradas (I/O): Captura de erros em tempo de execução (ValueError) e sanitização de dados recebidos via input().
 4. Programação funcional aplicada a relatórios: Filtragem e agregação de dados utilizando list comprehensions, map() e fatiamento (slicing) de listas.
 
 **1b. Lacunas — o que não sei e preciso descobrir (mínimo 3, com precisão técnica):**
+<<<<<<< HEAD
 
+=======
+>>>>>>> b754231bd8512620dfb1b30e03c1c8cfd24a175c
 1. Não sei como garantir que a geração de IDs continue sequencial e única sem reutilizar números antigos quando um registro intermediário é excluído da lista.
 2. Não sei como impedir a exclusão de um colaborador (remover_membro) caso já exista alguma tarefa vinculada ao seu ID, evitando referências órfãs.
 3. Não sei qual é a estrutura ideal em Python para validar se os IDs de membro e projeto informados na criação da tarefa realmente existem nos repositórios antes de instanciar o objeto "Tarefa".
@@ -265,6 +290,7 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 
 **2a. Aprofundamento dos objetos de conhecimento (mínimo 2 referências com síntese da contribuição para a solução):**
 
+<<<<<<< HEAD
 - **Referência 1:** Documentação Oficial do Python 3 — Errors and Exceptions (try / except ValueError) e Built-in Functions (any(), max(), next()). 
 
   — **Contribuição:** Esclareceu como capturar conversões inválidas de texto para int/float no input() sem interromper o loop principal do menu, além de mostrar o uso de expressões geradoras com any(t.membro == codigo for t in tarefas) para verificar vínculos antes de excluir um colaborador.
@@ -345,6 +371,32 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
     Aplicar no código Python as validações de entrada (try/except) e o bloqueio de integridade referencial em 
     remover_membro(), rodando os 8 casos de teste planejados e registrando o commit fix(crud): corrige geracao 
     de ID's e validação de entradas.
+=======
+- **Referência 1:** _…_ — **Contribuição:** _…_
+- **Referência 2:** _…_ — **Contribuição:** _…_
+
+**2b. Hipótese revisada — o que mudou em relação ao Campo 01 e por quê:**
+
+> _…_
+
+**2c. Dimensionamento inicial de recursos (recurso, quantidade estimada, justificativa técnica — mínimo 3 itens):**
+
+| RECURSO / MATERIAL / INSUMO | QUANTIDADE ESTIMADA | JUSTIFICATIVA TÉCNICA |
+|---|---|---|
+| _…_ | _…_ | _…_ |
+| _…_ | _…_ | _…_ |
+| _…_ | _…_ | _…_ |
+| _…_ | _…_ | _…_ |
+
+#### Registro do Ciclo 02 — 19/08
+1. **Desafio do ciclo (em 1 frase):** _…_
+2. **O que implementei (commits / arquivos / links):** _…_
+3. **Objeto(s) de conhecimento mobilizado(s):** _…_
+4. **Desvio ou erro encontrado + causa técnica:** _…_
+5. **Decisão de ajuste + fonte:** _…_
+6. **Feedback recebido e o que mudei:** _…_
+7. **Próximo passo:** _…_
+>>>>>>> b754231bd8512620dfb1b30e03c1c8cfd24a175c
 
 ## 🟢 CICLO 03 — 26/08 — Operadores, fluxogramas e paradigmas
 
@@ -357,6 +409,7 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 </details>
 
 #### Registro do Ciclo 03 — 26/08
+<<<<<<< HEAD
 1. **Desafio do ciclo (em 1 frase):** 
 
     Mapear o fluxo lógico das operações do CRUD usando operadores aritméticos, relacionais 
@@ -408,6 +461,15 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
     uma mensagem informativa quando não há tarefas cadastradas, além de revisar a precedência com parênteses na fórmula percentual. 
 
     Fonte: Documentação oficial do Python 3 (Built-in Exceptions — ZeroDivisionError e Operator Precedence).
+=======
+1. **Desafio do ciclo (em 1 frase):** _…_
+2. **O que implementei (commits / arquivos / links):** _…_
+3. **Objeto(s) de conhecimento mobilizado(s):** _…_
+4. **Desvio ou erro encontrado + causa técnica:** _…_
+5. **Decisão de ajuste + fonte:** _…_
+6. **Feedback recebido e o que mudei:** _…_
+7. **Próximo passo:** _…_
+>>>>>>> b754231bd8512620dfb1b30e03c1c8cfd24a175c
 
 ## 🟢 CICLO 04 — 02/09 — Estruturas condicionais: `if`, `elif`, `else`
 
@@ -422,6 +484,7 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 </details>
 
 #### Registro do Ciclo 04 — 02/09
+<<<<<<< HEAD
 1. **Desafio do ciclo (em 1 frase):** 
 
     Conectar cada estrutura condicional (if, elif, else) do CRUD a uma regra de negócio explícita 
@@ -463,6 +526,15 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 7. **Próximo passo:** 
 
     Refatorar os laços de repetição (while e for) do sistema para garantir menus resilientes a erros de digitação e buscas/listagens mais eficientes.
+=======
+1. **Desafio do ciclo (em 1 frase):** _…_
+2. **O que implementei (commits / arquivos / links):** _…_
+3. **Objeto(s) de conhecimento mobilizado(s):** _…_
+4. **Desvio ou erro encontrado + causa técnica:** _…_
+5. **Decisão de ajuste + fonte:** _…_
+6. **Feedback recebido e o que mudei:** _…_
+7. **Próximo passo:** _…_
+>>>>>>> b754231bd8512620dfb1b30e03c1c8cfd24a175c
 
 ---
 
