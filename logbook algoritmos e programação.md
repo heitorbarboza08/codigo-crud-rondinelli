@@ -210,9 +210,8 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 <<<<<<< HEAD
     O que eu já sabia: Sintaxe básica do Python, manipulação de arquivos locais, estruturação de documentos em Markdown (.md) e navegação básica no editor de código VS Code.
 
-    O que era novo: Controle de versão distribuído com Git (git init, git add, git commit, git push, git pull), padronização de histórico via Conventional Commits (docs(logbook):), vinculação de repositório local a remoto no GitHub (remote add origin), configuração do terminal integrado no VS Code e definição de schema inicial de dados para um sistema CRUD em memória (Membro, Projeto e Tarefa).
-=======
-    *Laços de repetição (for, if, while), variáveis (bool, string), VS Code**, Github, Git
+    O que era novo: Controle de versão distribuído com Git (git init, git add, git commit, git push, git pull), padronização de histórico via Conventional Commits (docs(logbook):), vinculação de repositório local a
+    remoto no GitHub (remote add origin), configuração do terminal integrado no VS Code e definição de schema inicial de dados para um sistema CRUD em memória (Membro, Projeto e Tarefa).
 >>>>>>> b754231bd8512620dfb1b30e03c1c8cfd24a175c
 
 4. **Desvio ou erro encontrado + causa técnica:** 
@@ -372,30 +371,6 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
     remover_membro(), rodando os 8 casos de teste planejados e registrando o commit fix(crud): corrige geracao 
     de ID's e validação de entradas.
 =======
-- **Referência 1:** _…_ — **Contribuição:** _…_
-- **Referência 2:** _…_ — **Contribuição:** _…_
-
-**2b. Hipótese revisada — o que mudou em relação ao Campo 01 e por quê:**
-
-> _…_
-
-**2c. Dimensionamento inicial de recursos (recurso, quantidade estimada, justificativa técnica — mínimo 3 itens):**
-
-| RECURSO / MATERIAL / INSUMO | QUANTIDADE ESTIMADA | JUSTIFICATIVA TÉCNICA |
-|---|---|---|
-| _…_ | _…_ | _…_ |
-| _…_ | _…_ | _…_ |
-| _…_ | _…_ | _…_ |
-| _…_ | _…_ | _…_ |
-
-#### Registro do Ciclo 02 — 19/08
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido e o que mudei:** _…_
-7. **Próximo passo:** _…_
 >>>>>>> b754231bd8512620dfb1b30e03c1c8cfd24a175c
 
 ## 🟢 CICLO 03 — 26/08 — Operadores, fluxogramas e paradigmas
