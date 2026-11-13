@@ -1062,4 +1062,4 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 3. **Priorize a ordem dos grupos:** Grupo 1 (16/11) → Defesa (18/11) → Grupo 2 (21/11) → Grupo 3 (26/11). Dentro de cada grupo, os Campos vêm antes dos Registros.
 4. **Use o histórico do Git** (`git log --oneline`) para reconstruir o que fez em cada ciclo — ele é uma evidência melhor que a memória.
 5. **Fale com o professor** antes do prazo, não depois.
-   
+
