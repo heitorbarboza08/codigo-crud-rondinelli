@@ -27,8 +27,8 @@
 | **Curso / Módulo** | Sistema de Informação · 2º período_ |
 | **Unidade curricular** | Algoritmos e Programação — UnDB 2026.2 |
 | **Professor** | Rondineli Seba Salomão |
-| **App-base do meu CRUD** | Um sistema simples de gerenciamento de tarefas e projetos |
-| **Link do meu repositório** | https://github.com/heitorbarboza08/codigo-crud-rondinelli/blob/main/crud |
+| **App-base do meu CRUD** | Sistema de gerenciamento de tarefas, projetos e colaboradores (Membro, Projeto, Tarefa) |
+| **Link do meu repositório** | https://github.com/heitorbarboza08/crud-e-logbook-algoritmos |
 | **Dupla de revisão (Campo 05)** | Felipe Couto Lamar |
 | **Função neste ciclo** | _Autor do meu CRUD · Revisor do CRUD de um colega_ |
 
