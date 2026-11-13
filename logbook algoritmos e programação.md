@@ -24,11 +24,11 @@
 | Campo | Preencha |
 |---|---|
 | **Nome do estudante** | Heitor França Barboza |
-| **Curso / Módulo** | Sistema de Informação · 2º período_ |
+| **Curso / Módulo** | Sistema de Informação · 2º período |
 | **Unidade curricular** | Algoritmos e Programação — UnDB 2026.2 |
 | **Professor** | Rondineli Seba Salomão |
 | **App-base do meu CRUD** | Sistema de gerenciamento de tarefas, projetos e colaboradores (Membro, Projeto, Tarefa) |
-| **Link do meu repositório** | https://github.com/heitorbarboza08/crud-e-logbook-algoritmos |
+| **Link do meu repositório** | https://github.com/heitorbarboza08/crud-e-logbook-rondinelli |
 | **Dupla de revisão (Campo 05)** | Felipe Couto Lamar |
 | **Função neste ciclo** | _Autor do meu CRUD · Revisor do CRUD de um colega_ |
 
@@ -106,10 +106,10 @@ Atualize a cada commit (troque ⬜ por ✅).
 
 | Grupo | Item | Prazo | Preenchido | Commit |
 |:--:|---|---|:--:|:--:|
-| 1 | Identificação | 16/11 | ⬜ | ⬜ |
-| 1 | Registros dos Ciclos 01, 02, 03 e 04 | 16/11 | ⬜ | ⬜ |
-| 1 | Campo 01 — Instrumento de entrada | 16/11 | ⬜ | ⬜ |
-| 1 | Campo 02 — Aprofundamento | 16/11 | ⬜ | ⬜ |
+| 1 | Identificação | 16/11 | ✅ | ✅ |
+| 1 | Registros dos Ciclos 01, 02, 03 e 04 | 16/11 | ✅ | ✅ |
+| 1 | Campo 01 — Instrumento de entrada | 16/11 | ✅ | ✅ |
+| 1 | Campo 02 — Aprofundamento | 16/11 | ✅ | ✅ |
 | 2 | Registros dos Ciclos 05, 06, 07 e 08 | 21/11 | ⬜ | ⬜ |
 | 2 | Checkpoint Conceitual | 21/11 | ⬜ | ⬜ |
 | 2 | Campo 03 — Execução e desvios | 21/11 | ⬜ | ⬜ |
@@ -192,7 +192,9 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 
 3. **Objeto(s) de conhecimento mobilizado(s):**
 
-    *Laços de repetição (for, if, while), variáveis (bool, string), VS Code**, Github, Git
+    O que eu já sabia: Sintaxe básica do Python, manipulação de arquivos locais, estruturação de documentos em Markdown (.md) e navegação básica no editor de código VS Code.
+
+    O que era novo: Controle de versão distribuído com Git (git init, git add, git commit, git push, git pull), padronização de histórico via Conventional Commits (docs(logbook):), vinculação de repositório local a remoto no GitHub (remote add origin), configuração do terminal integrado no VS Code e definição de schema inicial de dados para um sistema CRUD em memória (Membro, Projeto e Tarefa).
 
 4. **Desvio ou erro encontrado + causa técnica:** 
 
@@ -236,12 +238,14 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 *Grupo 1 | Prazo segunda 16/11, 23h59 | SEM CONSULTA*
 
 **1a. Objetos de conhecimento identificados (mínimo 3, com vocabulário técnico):**
+
 1. Modelagem de dados em memória e coleções: Uso de dataclasses, listas de objetos, ordenação com sorted() e funções anônimas (lambda).
 2. Controle de estado e chaves primárias: Lógica de geração de identificadores únicos (ID) e manutenção da integridade referencial entre entidades relacionadas (Membro, Projeto e Tarefa).
 3. Tratamento de exceções e validação de entradas (I/O): Captura de erros em tempo de execução (ValueError) e sanitização de dados recebidos via input().
 4. Programação funcional aplicada a relatórios: Filtragem e agregação de dados utilizando list comprehensions, map() e fatiamento (slicing) de listas.
 
 **1b. Lacunas — o que não sei e preciso descobrir (mínimo 3, com precisão técnica):**
+
 1. Não sei como garantir que a geração de IDs continue sequencial e única sem reutilizar números antigos quando um registro intermediário é excluído da lista.
 2. Não sei como impedir a exclusão de um colaborador (remover_membro) caso já exista alguma tarefa vinculada ao seu ID, evitando referências órfãs.
 3. Não sei qual é a estrutura ideal em Python para validar se os IDs de membro e projeto informados na criação da tarefa realmente existem nos repositórios antes de instanciar o objeto "Tarefa".
@@ -261,30 +265,86 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 
 **2a. Aprofundamento dos objetos de conhecimento (mínimo 2 referências com síntese da contribuição para a solução):**
 
-- **Referência 1:** _…_ — **Contribuição:** _…_
-- **Referência 2:** _…_ — **Contribuição:** _…_
+- **Referência 1:** Documentação Oficial do Python 3 — Errors and Exceptions (try / except ValueError) e Built-in Functions (any(), max(), next()). 
+
+  — **Contribuição:** Esclareceu como capturar conversões inválidas de texto para int/float no input() sem interromper o loop principal do menu, além de mostrar o uso de expressões geradoras com any(t.membro == codigo for t in tarefas) para verificar vínculos antes de excluir um colaborador.
+
+- **Referência 2:** AMALHO, Luciano. Python Fluente: Programação Clara, Concisa e Eficiente (Capítulo sobre Estruturas de Dados e dataclasses). 
+
+  — **Contribuição:** Fundamentou o entendimento sobre como instâncias de @dataclass são armazenadas por referência em listas mutáveis e por que o uso de um contador sequencial dedicado (em vez de len(lista) + 1) evita a reutilização de chaves primárias e garante a integridade referencial entre Membro, Projeto e Tarefa.
 
 **2b. Hipótese revisada — o que mudou em relação ao Campo 01 e por quê:**
 
-> _…_
+> A pesquisa confirmou a hipótese inicial de que o acoplamento da geração de IDs ao tamanho dinâmico da lista (len(lista) + 1) 
+  e a ausência de verificação de vínculos causam colisões e referências órfãs. O que mudou após o estudo foi a percepção de 
+  que a solução não exige apenas trocar len() por max() — pois excluir o último item ainda reutilizaria o ID —, mas sim adotar 
+  contadores sequenciais independentes por entidade, combinados com funções auxiliares de validação (localizar_por_id antes de criar tarefas, 
+  bloqueio via any() na exclusão e blocos try/except ValueError nas entradas numéricas).
 
 **2c. Dimensionamento inicial de recursos (recurso, quantidade estimada, justificativa técnica — mínimo 3 itens):**
 
-| RECURSO / MATERIAL / INSUMO | QUANTIDADE ESTIMADA | JUSTIFICATIVA TÉCNICA |
-|---|---|---|
-| _…_ | _…_ | _…_ |
-| _…_ | _…_ | _…_ |
-| _…_ | _…_ | _…_ |
-| _…_ | _…_ | _…_ |
+|   RECURSO / MATERIAL / INSUMO   |     QUANTIDADE ESTIMADA     |          JUSTIFICATIVA TÉCNICA           |
+
+|  Horas de estudo e implementação  |        6 horas        | Tempo necessário para revisar documentação sobre  |
+                                                              exceções/estruturas de dados (2h), 
+                                                              refatorar as funções do CRUD (2h30) e executar 
+                                                              testes manuais de borda (1h30).
+
+|   Módulos / arquivos do projeto   | 2 arquivos (crud.py   | Separação entre o código-fonte executável do      |
+                                      e (logbook algoritmos   gerenciador de tarefas e o registro técnico 
+                                       e programacao.md))     versionado no repositório Git.       
+
+|   Casos de teste funcionais e de  |  8 cenários de teste  | Cobertura mínima para validar cadastro, exclusão  |
+                                                              com re-cadastro (teste de colisão de ID), tentativa 
+                                                              de remover membro com tarefa ativa, IDs inexistentes 
+                                                              e entradas não numéricas (ValueError)..     
+
+|   Massa de dados de teste (seed)	| 3 membros, 2 projetos | Volume mínimo de registros em memória para testar |
+                                        e 4 tarefas	          relacionamentos múltiplos, filtros de conclusão e 
+                                                              fatiamento (tarefas[-3:]) no painel de métricas.
+                                        
 
 #### Registro do Ciclo 02 — 19/08
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido e o que mudei:** _…_
-7. **Próximo passo:** _…_
+1. **Desafio do ciclo (em 1 frase):** 
+
+    Diagnosticar as falhas estruturais de geração de IDs, integridade referencial e validação 
+    de tipos de entrada no CRUD em memória e fundamentar as correções via documentação técnica.
+
+2. **O que implementei (commits / arquivos / links):** 
+
+    Preenchimento do Campo 01 e Campo 02 no logbook algoritmos e programacao.md e 
+    revisão das funções gerar_id(), remover_membro() e criar_tarefa() no arquivo crud do 
+    repositório codigo-crud-rondinelli.
+
+3. **Objeto(s) de conhecimento mobilizado(s):** 
+
+    Tipos primitivos (int, float, str), conversão explícita de tipos, @dataclass, Enum, 
+    controle de fluxo, tratamento de exceções (ValueError) e funções agregadoras 
+    (any(), len(), map()).
+
+4. **Desvio ou erro encontrado + causa técnica:**
+ 
+    "Deu erro e consertei." | "O programa gerou IDs duplicados ao cadastrar um novo membro após excluir outro registro. 
+     Causa: cálculo do novo ID baseado no tamanho dinâmico da lista (len(lista) + 1), que diminui após uma remoção. 
+     Ajuste: substituir a dependência de len() por um contador incremental dedicado (proximo_id)."
+
+5. **Decisão de ajuste + fonte:** 
+
+    Optei por utilizar contadores incrementais independentes por entidade em vez de max(item.id) + 1 para impedir a 
+    reutilização de IDs mesmo quando o último item da lista é removido, além de validar chaves estrangeiras com 
+    localizar_por_id() antes de criar tarefas. Fonte: Documentação oficial do Python 3 (Built-in Functions e Data Structures).
+
+6. **Feedback recebido e o que mudei:** 
+
+    Identifiquei que, além da duplicidade de IDs, faltava proteger o sistema contra entradas inválidas no input() e 
+    impedir a exclusão de membros com tarefas ativas; planejei a inclusão de try/except ValueError e checagem com 
+    any() antes da remoção.
+
+7. **Próximo passo:** 
+
+    Aplicar no código Python as validações de entrada (try/except) e o bloqueio de integridade referencial em 
+    remover_membro(), rodando os 8 casos de teste planejados e registrando o commit fix(crud): corrige geracao 
+    de ID's e validação de entradas.
 
 ## 🟢 CICLO 03 — 26/08 — Operadores, fluxogramas e paradigmas
 
@@ -297,13 +357,57 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 </details>
 
 #### Registro do Ciclo 03 — 26/08
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido e o que mudei:** _…_
-7. **Próximo passo:** _…_
+1. **Desafio do ciclo (em 1 frase):** 
+
+    Mapear o fluxo lógico das operações do CRUD usando operadores aritméticos, relacionais 
+    e lógicos, prevenindo falhas de cálculo e comparações incorretas no painel de métricas.
+
+2. **O que implementei (commits / arquivos / links):** 
+
+    Atualização da função relatorio_geral() no arquivo crud.py com cálculo de taxa de conclusão e média de horas por tarefa, 
+    além do registro no logbook algortimos e programacao.md (feat(crud): adiciona metricas de media e percentual de conclusao).
+
+3. **Objeto(s) de conhecimento mobilizado(s):** 
+
+    Operadores: Aritméticos (+, /, * para soma incremental de IDs, média de horas e percentual de conclusão), 
+    relacionais (==, > para comparar IDs, verificar situacao == Situacao.CONCLUIDA.value e checar listas não vazias) 
+    e lógicos (not, in para validar registros ausentes com if not membro: e checar escolhas no dicionário if escolha in opcoes:).
+
+    Tipos e paradigmas: Tipos numéricos (int, float), booleanos (bool), strings (str) e combinação entre paradigma imperativo/procedural 
+    (funções de menu e estado) e funcional (map(), lambda e list comprehension).
+
+    Fluxograma: O desenho do fluxo de criar_tarefa() e relatorio_geral() ajudou a perceber caminhos sem saída onde a lista tarefas 
+    estava vazia antes de calcular médias.
+
+4. **Desvio ou erro encontrado + causa técnica:** 
+
+    "Deu erro e consertei." | "O programa quebrou com ZeroDivisionError ao calcular a média de horas estimadas e a porcentagem 
+    de conclusão no relatorio_geral() com a lista tarefas vazia. 
+
+    Causa: execução direta da expressão (len(concluidas) / len(tarefas)) * 100 sem guarda prévia quando len(tarefas) == 0. 
+
+    Ajuste: condicionar o cálculo a if len(tarefas) > 0:."
+
+5. **Decisão de ajuste + fonte:** 
+
+    Optei por isolar os cálculos de divisão dentro de um bloco condicional de guarda (if len(tarefas) > 0:) e 
+    exibir uma mensagem informativa quando não há tarefas cadastradas, além de revisar a precedência com parênteses 
+    na fórmula percentual. 
+
+    Fonte: Documentação oficial do Python 3 (Built-in Exceptions — ZeroDivisionError e Operator Precedence).
+
+6. **Feedback recebido e o que mudei:**
+
+    Percebi ao revisar o fluxograma que, além da divisão por zero, usar = dentro de expressões ou confundir 
+    objetos Enum (Situacao.CONCLUIDA) com seu valor string (Situacao.CONCLUIDA.value) fazia a comparação relacional == retornar False 
+    silenciosamente; padronizei todas as comparações para .value.
+
+7. **Próximo passo:** 
+
+    Optei por isolar os cálculos de divisão dentro de um bloco condicional de guarda (if len(tarefas) > 0:) e exibir 
+    uma mensagem informativa quando não há tarefas cadastradas, além de revisar a precedência com parênteses na fórmula percentual. 
+
+    Fonte: Documentação oficial do Python 3 (Built-in Exceptions — ZeroDivisionError e Operator Precedence).
 
 ## 🟢 CICLO 04 — 02/09 — Estruturas condicionais: `if`, `elif`, `else`
 
@@ -318,13 +422,47 @@ Cada ciclo tem sua própria seção abaixo, já com o modelo. Se precisar de esp
 </details>
 
 #### Registro do Ciclo 04 — 02/09
-1. **Desafio do ciclo (em 1 frase):** _…_
-2. **O que implementei (commits / arquivos / links):** _…_
-3. **Objeto(s) de conhecimento mobilizado(s):** _…_
-4. **Desvio ou erro encontrado + causa técnica:** _…_
-5. **Decisão de ajuste + fonte:** _…_
-6. **Feedback recebido e o que mudei:** _…_
-7. **Próximo passo:** _…_
+1. **Desafio do ciclo (em 1 frase):** 
+
+    Conectar cada estrutura condicional (if, elif, else) do CRUD a uma regra de negócio explícita 
+    para barrar dados inválidos ou inconsistentes antes de alterar as listas em memória.
+
+2. **O que implementei (commits / arquivos / links):**
+
+    Refatoração das funções cadastrar_membro(), cadastrar_projeto(), criar_tarefa(), remover_membro() e 
+    atualizar_situacao() em crud.py, vinculando validações de negócio às entradas e atualizando o logbook 
+    (fix(crud): aplica validacoes de regras de negocio nas condicionais).
+
+3. **Objeto(s) de conhecimento mobilizado(s):** 
+
+    Estruturas de seleção simples, composta e encadeada (if, elif, else), cláusulas de guarda 
+    (early return com if not registro: return), validação de strings vazias (.strip() == ""), 
+    validação de domínio numérico (horas <= 0) e integridade referencial entre entidades.
+
+4. **Desvio ou erro encontrado + causa técnica:** 
+
+    "Deu erro e consertei." | "O sistema permitiu cadastrar tarefas com horas_estimadas negativas ou zero (-5.0), nomes em branco ("") e vinculadas a membro_id ou projeto_id inexistentes. 
+
+    Causa: ausência de condicionais verificando o retorno None de localizar_por_id() e falta de checagem de intervalo numérico (horas <= 0) e de string vazia antes do append(). 
+
+    Ajuste: inserir cláusulas de guarda com if not localizar_por_id(...), if not nome.strip() e if horas <= 0:."
+
+5. **Decisão de ajuste + fonte:** 
+
+    Adotei o padrão de cláusulas de guarda (early return) no início das funções de escrita e exclusão para rejeitar entradas inválidas 
+    (None, strings vazias ou valores <= 0) antes da persistência em lista, além de usar if / elif / else no menu e na atualização de status. 
+    
+    Fonte: DOWNEY, Allen B. Pense em Python (Capítulo 5 — Condicionais e recursividade) e exercícios resolvidos em aula sobre validação de invariantes.
+
+6. **Feedback recebido e o que mudei:**
+
+    Comparando com o Campo 02, o desvio envolvendo IDs inexistentes e dados inválidos já estava parcialmente previsto nos 8 casos de teste dimensionados, 
+    mas a entrada de horas negativas e strings compostas apenas por espaços exigiu adicionar .strip() e horas <= 0 nas condicionais; 
+    também bloqueei a exclusão de membros com tarefas ativas.
+
+7. **Próximo passo:** 
+
+    Refatorar os laços de repetição (while e for) do sistema para garantir menus resilientes a erros de digitação e buscas/listagens mais eficientes.
 
 ---
 
